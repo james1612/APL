@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ImageUpload{% endblock %}
+
+{% block body %}
+    <h1>Create new ImageUpload</h1>
+
+    {{ include('image_test_contoller/_form.html.twig') }}
+
+    <a href="{{ path('app_image_test_contoller_index') }}">back to list</a>
+{% endblock %}

@@ -22,3 +22,12 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Service\LocalStorageService:
+        arguments:
+            $projectDir: '%kernel.project_dir%'
+
+    App\Service\AzureStorageService:
+        arguments:
+            $connectionString: '%env(BlobEndpoint)%'
+            $containerName: 'apl-recruitment-images'

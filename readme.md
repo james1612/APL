@@ -4,7 +4,7 @@
 
 - MySQL installed and running.
 - Composer installed.
-- Symfony server installed.
+- Symfony cli installed.
 
 ## Setup
 

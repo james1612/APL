@@ -48,8 +48,16 @@ To switch between Azure and local storage:
 
 ## Design Considerations
 
-- Utilizes a factory pattern to switch between Azure and local storage services at runtime.
-- Image validation is done using constants and a private method.
-- Data storage is handled using Doctrine entities and repositories.
-- Security-sensitive information like BlobEndpoint is stored in the `.env` file.
-- Future enhancements include improving UI design, adding custom exceptions, unit tests, and refactoring to extract image upload logic into a reusable class.
+- I wanted to use the same route for both Azure and Local storage. I’m written both services to implement the same interface, and then used the factory pattern to return the one I want at runtime. This makes it a lot cleaner and easier to extend, e.g. If we wanted an s3 integration too.  
+- We’re just using an env variable here, so there’s no need to set a query param in the request which would have been another option. 
+- The image itself is validated in a private method. Nothing crazy but good to use consts incase the requirements change and we have ‘magic’ numbers in our code. There are probably libraries that will validate the image in a nicer way. 
+- I’m just saving into the db using an Entity with Doctrine mappings. Again, nothing too crazy as there’s only one entity so no relations etc. I’ve made a Repository for it too - I’m a fan of the Repository pattern even though I haven’t used it here
+- BlobEndpoint gets kept in an .env file for security purposes.
+
+## Future work
+
+- Make the ui looks a lot nicer 
+- Make some custom Exceptions. These make debugging a lot easier. 
+- Write unit tests
+- Extract image upload code into an ImageUploader class. Depending on what application we are building we can reuse in other parts, e.g. other controllers, services
+

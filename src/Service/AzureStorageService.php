@@ -26,7 +26,7 @@ class AzureStorageService implements ImageStorageInterface
             $this->blobClient->createBlockBlob($this->containerName, $fileName, fopen($image->getPathname(), 'r'));
 
             $upload = new ImageUpload();
-            $upload->setType('local');
+            $upload->setType('azure');
             $upload->setPath($this->containerName);
             $upload->setCreatedOn(new \DateTime());
     

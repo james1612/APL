@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Service\AzureStorageService;
-use App\Service\LocalStorageService;
 use App\Service\Factory\ImageStorageFactory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,8 +18,6 @@ class ImageUploadController extends AbstractController
     #[Route('/new', name: 'app_image_upload_new', methods: ['POST'])]
     public function new(
         Request $request, 
-        LocalStorageService $localStorageService, 
-        AzureStorageService $azureStorageService,
         ImageStorageFactory $storageFactory
         ): Response
     {
@@ -43,7 +39,7 @@ class ImageUploadController extends AbstractController
         } catch (\Exception $exception) {
             return new Response($exception->getMessage(), Response::HTTP_BAD_REQUEST, ['Content-Type' => 'application/json']);
         }
-
+        
         return new Response('', Response::HTTP_CREATED, ['Content-Type' => 'application/json']);
 
     }

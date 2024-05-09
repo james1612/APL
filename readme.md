@@ -8,20 +8,21 @@
 
 ## Setup
 
-1. Run `composer install` to install dependencies.
-2. Start Symfony server by running:
+1. Add .env file included in email
+2. Run `composer install` to install dependencies.
+3. Start Symfony server by running:
    ```
    symfony server:start --no-tls -d
    ```
-3. Create the database by running:
+4. Create the database by running:
    ```
    php bin/console doctrine:database:create
    ```
-4. Run migrations to set up the database schema:
+5. Run migrations to set up the database schema:
    ```
    php bin/console doctrine:migrations:migrate
    ```
-5. Navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) and verify the default Symfony page is displayed.
+6. Navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) and verify the default Symfony page is displayed.
 
 ## Configuration
 

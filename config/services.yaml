@@ -31,3 +31,4 @@ services:
         arguments:
             $connectionString: '%env(BlobEndpoint)%'
             $containerName: 'apl-recruitment-images'
+            $em: '@doctrine.orm.entity_manager'
